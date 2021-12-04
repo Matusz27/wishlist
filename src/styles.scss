@@ -16,5 +16,12 @@ body {
     color: white;
     background-color: #171A21;
     background-image: url(assets/background.svg);
+    min-height: 100vh;
 }
 
+.content{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
