@@ -14,8 +14,9 @@
     background-color: #29303D;
     border-radius: 15px;
     margin: 0em;
-    padding: 1em;
-    width: 340px;
+    padding: 1.5em 1em;
+    width: 90vw;
+    max-width: 600px;
 
     input{
         font-family: Poppins;
@@ -32,6 +33,7 @@
         flex-direction: column;
         gap: 0.25em;
         width: 80%;
+        max-width: 500px;
 
         .inputs{
             display: flex;
@@ -65,13 +67,84 @@
 
     #submit{
         border: none;
-        padding: 0.5em 2em;
+        padding: 0.3em 1.5em;
         border-radius: 5px;
-        letter-spacing: 0.25em;
+        letter-spacing: 0.1em;
         font-weight: 300;
         background-color: #2E64D1;
         color: white;
-        font-size: 1em;
+        font-size: 1.1em;
+        transition: 250ms;
+        cursor: pointer;
     }
-
+    
+    #submit:hover{
+        background-color: white;
+        color: #2E64D1;
+    }
 }
+
+
+@media only screen and(min-width: 500px) {
+
+    .main-container {
+
+        gap: 1.5em;
+        padding: 2em 1em;
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        .input-container {
+            width: 80%;
+
+            .inputs {
+
+                input,
+                select {
+                    height: 2.5em;
+                    font-size: 1em;
+                }
+
+                #id {
+                    width: 80%;
+                    padding-left: 1em;
+                }
+
+                #currency {
+                    width: 20%;
+                    padding-left: 0.75em;
+                }
+            }
+            span {
+                font-size: 0.8em;
+            }
+        }
+
+        #submit {
+            padding: 0.5em 1.75em;
+            border-radius: 8px;
+            letter-spacing: 0.2em;
+            font-size: 1.25em;
+        }
+    }
+}
+
+@media only screen and(min-width: 1200px) {
+
+    .main-container {
+
+        h2 {
+            font-size: 2em;
+            letter-spacing: 0.15em;
+        }
+
+        #submit {
+            padding: 0.5em 2em;
+            letter-spacing: 0.2em;
+            font-size: 1.25em;
+        }
+    }
+}
+
