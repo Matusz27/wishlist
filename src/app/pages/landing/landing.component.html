@@ -5,19 +5,20 @@
 
 
 
-<div class="main-container">
+<form class="main-container" [formGroup]="wishlistForm" (ngSubmit) = "onSubmit()">
     <h2>Steam Wishlist Analyser</h2>
     <div class="input-container">
         <div class="inputs">
-        <input id="id" type="text" placeholder="Steam ID">
-        <select name="currency" id="currency">
-            <option value="auto">Auto</option>
-            <option value="PLN">PLN</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
+        <input formControlName="steamID" id="id" type="text" required placeholder="Steam ID">
+        <select formControlName="currency" name="currency" id="currency">
+            <option value="">Auto</option>
+            <option value="PL">PLN</option>
+            <option value="US">USD</option>
+            <option value="FR">EUR</option>
+            <option value="UK">GBP</option>
         </select>
         </div>
         <span>Supports: SteamID, Account URL, Wishlist URL</span>
     </div>
     <input id="submit" type="submit" value="Analise">
-</div>
+</form>

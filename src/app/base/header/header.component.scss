@@ -11,6 +11,12 @@ header {
         font-size: 1.5em;
         font-weight: 400;
         font-style: italic;
+        cursor: pointer;
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
     }
 
     .hamburger{
@@ -33,6 +39,9 @@ header {
             align-items: center;
             cursor: pointer;
             transition: 250ms;
+            font-weight: 300;
+            color: white;
+            text-decoration: none;
         }
 
         a:hover{
