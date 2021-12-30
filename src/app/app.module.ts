@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,10 +19,11 @@ import { ItemDisplayComponent } from './pages/item-display/item-display.componen
     FooterComponent,
     LandingComponent,
     LoaderComponent,
-    ItemDisplayComponent
+    ItemDisplayComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule

@@ -4,5 +4,68 @@
 
 
 
+<app-loader *ngIf = "!isFinished; else finished" [status] = 'status'></app-loader>
 
-<app-loader></app-loader>
+<ng-template #finished>
+
+    <main>
+        <div class="costs">
+            <div class="all-games costs-container">
+                <h2>Wishlist Total:</h2>
+                <div class="costs-breakdown">
+                    <span>Absulute Cost: {{processedData.sumAll.cleanPrice / 100}}</span>
+                    <span>Current Cost: {{processedData.sumAll.discounPrice / 100}} $</span>
+                    <span>Average Price: {{((processedData.sumAll.cleanPrice / 100) / itemAmount).toFixed(2)}} $</span>
+                    <span>Average Discount: {{(processedData.sumAll.discountSum / itemAmount).toFixed(2)}} %</span>
+                </div>
+            </div>
+            <div class="top-10-games costs-container">
+                <h2>Top 10 Games:</h2>
+                <div class="costs-breakdown">
+                    <span>Absulute Cost: {{processedData.sum10.cleanPrice / 100}}</span>
+                    <span>Current Cost: {{processedData.sum10.discounPrice / 100}} $</span>
+                    <span>Average Price: {{((processedData.sum10.cleanPrice / 100) / 10).toFixed(2)}} $</span>
+                    <span>Average Discount: {{(processedData.sum10.discountSum / 10).toFixed(2)}} %</span>
+                </div>
+            </div>
+            <div class="top-100-games costs-container">
+                <h2>Top 100 Games:</h2>
+                <div class="costs-breakdown">
+                    <span>Absulute Cost: {{processedData.sum100.cleanPrice / 100}}</span>
+                    <span>Current Cost: {{processedData.sum100.discounPrice / 100}} $</span>
+                    <span>Average Price: {{((processedData.sum100.cleanPrice / 100) / 100).toFixed(2)}} $</span>
+                    <span>Average Discount: {{(processedData.sum100.discountSum / 100).toFixed(2)}} %</span>
+                </div>
+            </div>
+        </div>
+        <div class="right-data">
+
+            <div class="top-15-tags">
+                <h2>Top 15 Tags:</h2>
+                <div class="tags-container">
+                    <div class="tag" *ngFor = "let tag of topTags">
+                        <span>{{tag[0]}}</span>
+                        <span>{{tag[1]}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Item-chart">
+                <h2>Items Chart:</h2>
+                <div class="legend">
+                    <h3>Total Items: {{itemAmount}}</h3>
+                    <div class="Items">
+                        <span>Coming Soon:{{itemStatus.comingsoon}}</span>
+                        <span>Free:{{itemStatus.free}}</span>
+                        <span>Pre-order:{{itemStatus.preorder}}</span>
+                        <span>Normal:{{itemStatus.normal}}</span>
+                        <span>Discounted:{{itemStatus.discounted}}</span>
+                    </div>
+                </div>
+                <div class="graph">
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</ng-template>
