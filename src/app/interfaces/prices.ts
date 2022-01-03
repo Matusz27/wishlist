@@ -1,5 +1,8 @@
 export interface Prices {
     cleanPrice: number, 
-    discounPrice: number, 
-    discountSum: number
+    discountPrice: number, 
+    discountSum: number, 
+    discountedCount: number,
+    averagePrice: number,
+    averageDiscount:number
 }

@@ -13,28 +13,28 @@
             <div class="all-games costs-container">
                 <h2>Wishlist Total:</h2>
                 <div class="costs-breakdown">
-                    <span>Absulute Cost: {{processedData.sumAll.cleanPrice / 100}}</span>
-                    <span>Current Cost: {{processedData.sumAll.discounPrice / 100}} $</span>
-                    <span>Average Price: {{((processedData.sumAll.cleanPrice / 100) / itemAmount).toFixed(2)}} $</span>
-                    <span>Average Discount: {{(processedData.sumAll.discountSum / itemAmount).toFixed(2)}} %</span>
+                    <span>Absulute Cost: {{sumAll.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Current Cost: {{sumAll.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Price: {{sumAll.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Discount: {{ sumAll.averageDiscount | percent:'1.0-2' }}</span>
                 </div>
             </div>
             <div class="top-10-games costs-container">
                 <h2>Top 10 Games:</h2>
                 <div class="costs-breakdown">
-                    <span>Absulute Cost: {{processedData.sum10.cleanPrice / 100}}</span>
-                    <span>Current Cost: {{processedData.sum10.discounPrice / 100}} $</span>
-                    <span>Average Price: {{((processedData.sum10.cleanPrice / 100) / 10).toFixed(2)}} $</span>
-                    <span>Average Discount: {{(processedData.sum10.discountSum / 10).toFixed(2)}} %</span>
+                    <span>Absulute Cost: {{sum10.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Current Cost: {{sum10.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Price: {{sum10.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Discount: {{sum10.averageDiscount | percent:'1.0-2'}}</span>
                 </div>
             </div>
             <div class="top-100-games costs-container">
                 <h2>Top 100 Games:</h2>
                 <div class="costs-breakdown">
-                    <span>Absulute Cost: {{processedData.sum100.cleanPrice / 100}}</span>
-                    <span>Current Cost: {{processedData.sum100.discounPrice / 100}} $</span>
-                    <span>Average Price: {{((processedData.sum100.cleanPrice / 100) / 100).toFixed(2)}} $</span>
-                    <span>Average Discount: {{(processedData.sum100.discountSum / 100).toFixed(2)}} %</span>
+                    <span>Absulute Cost: {{sum100.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Current Cost: {{sum100.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Price: {{sum100.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+                    <span>Average Discount: {{sum100.averageDiscount | percent:'1.0-2'}}</span>
                 </div>
             </div>
         </div>

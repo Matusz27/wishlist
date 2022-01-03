@@ -9,8 +9,10 @@ import { Status } from '../interfaces/status';
 })
 export class SteamCallService {
   
-  private selectedCurrency:string = "";
+  
   private Subject = new Subject();
+  selectedCountry:string = "";
+  selectedCurrency:string = "";
   all_tags!: { [key: string]: number; };
   currentStatus:string = "";
   steamData:{} = {};
@@ -18,8 +20,20 @@ export class SteamCallService {
 
   constructor(private http: HttpClient) {}
 
+
+  async getCurrency():Promise<string>{
+    let url = 'http://ipwhois.app/json/'
+    let currency = await this.http.get<any>(url, {responseType: "json"}).toPromise()
+    return currency.currency_code
+  }
+
   setCurrency(currency:string){
-    this.selectedCurrency = currency;
+    if (currency === ""){
+      return
+    }
+    let SplitedCurrency = currency.split(',', 2)
+    this.selectedCountry = SplitedCurrency[0]
+    this.selectedCurrency = SplitedCurrency[1]
   }
 
   changeStatus(status:string){
@@ -33,7 +47,7 @@ export class SteamCallService {
 
     for (let page = 0; page < 150; page++) {
 
-        let query = {'p': page, 'cc': this.selectedCurrency}
+        let query = {'p': page, 'cc': this.selectedCountry}
 
         let steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
         
@@ -54,10 +68,11 @@ export class SteamCallService {
     return (itemstosum.reduce((acc:Prices, item:any) => {
       let cleanedData = new priceDataCleaner(item.subs)
       acc.cleanPrice += cleanedData.fullprice
-      acc.discounPrice += cleanedData.discountprice
+      acc.discountPrice += cleanedData.discountprice
       acc.discountSum += cleanedData.discount
+      acc.discountedCount += cleanedData.isDiscounted
       return (acc)
-    }, {cleanPrice: 0, discounPrice: 0, discountSum: 0}))
+    }, {cleanPrice: 0, discountPrice: 0, discountSum: 0, discountedCount: 0}))
   }
 
   sumGames(amount:number = 0){
@@ -66,7 +81,23 @@ export class SteamCallService {
     if (amount != 0){
       items = items.filter((item:any) => item.priority <= amount && item.priority != 0 )
     }
-    return (this.sumItems(items))
+
+    let sumedItems = this.sumItems(items)
+
+    sumedItems.cleanPrice /= 100
+    sumedItems.discountPrice /= 100
+
+    sumedItems.averageDiscount = (sumedItems.discountSum / sumedItems.discountedCount) / 100
+
+    if (amount === 0){
+      sumedItems.averagePrice = sumedItems.cleanPrice / Object.keys(this.steamData).length
+    }
+    else{
+      sumedItems.averagePrice = sumedItems.cleanPrice / amount
+    }
+    
+
+    return (sumedItems)
   }
 
   tagsCounter(){
@@ -127,12 +158,12 @@ class priceDataCleaner {
   fullprice:number = 0
   discountprice:number = 0
   discount:number = 0
+  isDiscounted:number = 0
   
   constructor(pricelist:any){
 
     if (pricelist.length != 0){
         let subs = pricelist[0]
-        console.log(subs.discount_block)
         this.fullprice = subs['price']
         this.discountprice = this.fullprice
         this.discount = subs['discount_pct']
@@ -140,6 +171,7 @@ class priceDataCleaner {
 
     if (this.discount != 0){
         this.discountprice = this.fullprice
+        this.isDiscounted = 1
         this.fullprice = Math.round(this.discountprice / (1 - (this.discount / 100)))
     }
   }

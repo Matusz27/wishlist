@@ -45,3 +45,29 @@ main{
     }
 
 }
+
+
+@media only screen and(min-width: 800px) {
+
+    main {
+        display: flex;
+        min-height: 75vh;
+
+        gap: 1em;
+
+        .costs{
+            min-width: 350px;
+            width: 33%;
+        }
+
+        .right-data{
+            width: 67%;
+        }
+
+        .tags-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+}
