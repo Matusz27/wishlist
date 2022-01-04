@@ -40,7 +40,7 @@
         </div>
         <div class="right-data">
 
-            <div class="top-15-tags">
+            <div class="tags">
                 <h2>Top 15 Tags:</h2>
                 <div class="tags-container">
                     <div class="tag" *ngFor = "let tag of topTags">
@@ -53,12 +53,12 @@
                 <h2>Items Chart:</h2>
                 <div class="legend">
                     <h3>Total Items: {{itemAmount}}</h3>
-                    <div class="Items">
-                        <span>Coming Soon:{{itemStatus.comingsoon}}</span>
-                        <span>Free:{{itemStatus.free}}</span>
-                        <span>Pre-order:{{itemStatus.preorder}}</span>
-                        <span>Normal:{{itemStatus.normal}}</span>
-                        <span>Discounted:{{itemStatus.discounted}}</span>
+                    <div class="legend-items">
+                        <span>Coming Soon: {{itemStatus.comingsoon}}</span>
+                        <span>Free: {{itemStatus.free}}</span>
+                        <span>Pre-order: {{itemStatus.preorder}}</span>
+                        <span>Normal: {{itemStatus.normal}}</span>
+                        <span>Discounted: {{itemStatus.discounted}}</span>
                     </div>
                 </div>
                 <div class="graph">
