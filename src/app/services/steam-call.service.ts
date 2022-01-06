@@ -44,6 +44,7 @@ export class SteamCallService {
   async fetchSteamData(id:number){
 
     let url = `http://localhost:4200/api/${id}/wishlistdata/`
+    console.log(url)
 
     for (let page = 0; page < 1; page++) {
         //150
@@ -86,8 +87,11 @@ export class SteamCallService {
 
     sumedItems.cleanPrice /= 100
     sumedItems.discountPrice /= 100
+    sumedItems.averageDiscount = 0
 
-    sumedItems.averageDiscount = (sumedItems.discountSum / sumedItems.discountedCount) / 100
+    if (sumedItems.discountedCount != 0){
+      sumedItems.averageDiscount = (sumedItems.discountSum / sumedItems.discountedCount) / 100
+    }
 
     if (amount === 0){
       sumedItems.averagePrice = sumedItems.cleanPrice / Object.keys(this.steamData).length

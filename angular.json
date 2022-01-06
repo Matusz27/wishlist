@@ -70,14 +70,20 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
+          "options": {
+            "browserTarget": "wishlist:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
+
           "configurations": {
             "production": {
               "browserTarget": "wishlist:build:production",
-              "proxyConfig": "./proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "wishlist:build:development",
-              "proxyConfig": "./proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

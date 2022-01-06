@@ -1,6 +1,6 @@
 
 {
-    "/api/*/wishlistdata": {
+    "/api/*/wishlistdata*": {
       "target": "https://store.steampowered.com/wishlist/profiles/",
       "secure": true,
       "changeOrigin": true,

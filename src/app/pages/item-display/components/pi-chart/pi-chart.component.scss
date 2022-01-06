@@ -1,0 +1,18 @@
+
+    .legend{
+
+        h3{
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .legend-items {
+            background-color: #1D222B;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0.2em 1em;
+            font-weight: 300;
+        }
+    }

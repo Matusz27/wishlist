@@ -3,7 +3,6 @@ import '@angular/common/locales/global/fr'
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SteamCallService } from 'src/app/services/steam-call.service';
-import { Status } from 'src/app/interfaces/status';
 import { Prices } from 'src/app/interfaces/prices';
 
 @Component({
@@ -16,11 +15,9 @@ export class ItemDisplayComponent implements OnInit, OnDestroy {
   id!: number;
   isFinished:boolean = false;
   status:string = "Warming up";
-  itemStatus!:Status;
   sumAll!: Prices
   sum10!: Prices
   sum100!: Prices
-  itemAmount:number = 0
   topTags!:any;
   currencyCode!:string;
   private urlsub: Subscription = new Subscription;
@@ -51,16 +48,12 @@ export class ItemDisplayComponent implements OnInit, OnDestroy {
     if (this.currencyCode === ""){
       this.currencyCode = await this.steamCall.getCurrency()
     }
-
-    this.itemAmount = Object.keys(this.steamCall.steamData).length;
     
     this.sumAll = this.steamCall.sumGames()
     this.sum10 = this.steamCall.sumGames(10)
     this.sum100 = this.steamCall.sumGames(100)
 
     this.topTags = this.steamCall.tagsCounter()
-
-    this.itemStatus = this.steamCall.statusCounter()
 
     this.isFinished = true
 
