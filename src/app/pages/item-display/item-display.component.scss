@@ -15,17 +15,6 @@ main{
         font-weight: 400;
     }
 
-    .costs-container{
-
-        .costs-breakdown{
-            display: flex;
-            flex-direction: column;
-            margin-left: 1.5em;
-            padding-left: 0.5em;
-            border-left: white 2px solid;
-        }
-    }
-
     .tags-container{
         display: flex;
         gap: 0.5em 1em;
@@ -43,6 +32,15 @@ main{
             font-weight: 300;
         }
     }
+    .options{
+
+        span{
+            padding-left: 1em;
+            font-size: 2em;
+            font-weight: 200;
+            font-style: italic;
+        }
+}
 
 }
 
@@ -51,9 +49,9 @@ main{
 
     main {
         display: flex;
-        padding: 1em 3em;
+        padding: 1em 2em;
         max-height: 80vh;
-        max-width: 1025px;
+        max-width: 1050px;
         gap: 3em;
 
         .costs{
@@ -79,9 +77,11 @@ main{
             flex-direction: row;
             flex-wrap: wrap;
         }
-        .legend{
-            margin-left: 2em;
-            
+
+        .charts{
+            display: flex;
+            justify-content: space-between;
+            min-height: 200px;
         }
     }
 }

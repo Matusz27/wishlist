@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+
+<div class="costs-breakdown">
+    <span>Absulute Cost: {{sum.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+    <span>Current Cost: {{sum.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+    <span>Average Price: {{sum.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
+    <span>Average Discount: {{ sum.averageDiscount | percent:'1.0-2' }}</span>
+</div>

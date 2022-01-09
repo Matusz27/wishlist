@@ -4,38 +4,23 @@
 
 
 
-<app-loader *ngIf = "!isFinished; else finished" [status] = 'status'></app-loader>
+<app-loader *ngIf = "!isFinished; else finished"></app-loader>
 
 <ng-template #finished>
 
     <main>
         <div class="costs">
-            <div class="all-games costs-container">
+            <div class="costs-container">
                 <h2>Wishlist Total:</h2>
-                <div class="costs-breakdown">
-                    <span>Absulute Cost: {{sumAll.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Current Cost: {{sumAll.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Price: {{sumAll.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Discount: {{ sumAll.averageDiscount | percent:'1.0-2' }}</span>
-                </div>
+                <app-breakdown></app-breakdown>
             </div>
-            <div class="top-10-games costs-container">
+            <div class="costs-container">
                 <h2>Top 10 Games:</h2>
-                <div class="costs-breakdown">
-                    <span>Absulute Cost: {{sum10.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Current Cost: {{sum10.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Price: {{sum10.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Discount: {{sum10.averageDiscount | percent:'1.0-2'}}</span>
-                </div>
+                <app-breakdown [amount] = 10></app-breakdown>
             </div>
-            <div class="top-100-games costs-container">
+            <div class="costs-container">
                 <h2>Top 100 Games:</h2>
-                <div class="costs-breakdown">
-                    <span>Absulute Cost: {{sum100.cleanPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Current Cost: {{sum100.discountPrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Price: {{sum100.averagePrice | currency: currencyCode:'symbol-narrow':undefined:'fr-FR'}}</span>
-                    <span>Average Discount: {{sum100.averageDiscount | percent:'1.0-2'}}</span>
-                </div>
+                <app-breakdown  [amount] = 100></app-breakdown>
             </div>
         </div>
         <div class="right-data">
@@ -50,8 +35,11 @@
                 </div>
             </div>
             <div class="Item-chart">
-                <h2>Items Chart:</h2>
-                <app-pi-chart></app-pi-chart>
+                <app-pi-chart class = "charts"></app-pi-chart>
+            </div>
+            <div class="options">
+                <h2>Options:</h2>
+                <span>Coming Soon!</span>
             </div>
         </div>
     </main>

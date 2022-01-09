@@ -44,7 +44,6 @@ export class SteamCallService {
   async fetchSteamData(id:number){
 
     let url = `http://localhost:4200/api/${id}/wishlistdata/`
-    console.log(url)
 
     for (let page = 0; page < 1; page++) {
         //150
@@ -76,7 +75,7 @@ export class SteamCallService {
     }, {cleanPrice: 0, discountPrice: 0, discountSum: 0, discountedCount: 0}))
   }
 
-  sumGames(amount:number = 0){
+  sumGames(amount:number){
     let items = Object.values(this.steamData)
 
     if (amount != 0){

@@ -1,18 +1,73 @@
 
+    
+
+h2 {
+    background-color: #1D222B;
+    padding: 0.2em 1em;
+    border-radius: 5px;
+    font-weight: 400;
+}
+
+
+.graph-right {
+    height: 220px;
+}
+
+.graph-left{
+
     .legend{
 
         h3{
             font-weight: 300;
             font-style: italic;
+            margin: 0.5em 0em;
         }
 
         .legend-items {
             background-color: #1D222B;
             border-radius: 5px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding: 0.2em 1em;
+            padding: 0.5em;
             font-weight: 300;
+
+            .item{
+
+                display: flex;
+                gap: 0.5em;
+                align-items: center;
+
+                .color{
+                    background-color: transparent;
+                    border: none;
+                    height: 20px;
+                    width: 18px;
+                    cursor: pointer;
+                }
+                .color::-webkit-color-swatch{
+                    border: none;
+                    border-radius: 10%;
+                }
+            }
         }
     }
+}
+
+
+
+@media only screen and(min-width: 900px) {
+
+    .graph-left{
+        height: 200px;
+        width: 50%;
+    }
+
+    .legend{
+        padding-left: 2em;
+    }
+
+    .graph-right{
+        width: 50%;
+    }
+}

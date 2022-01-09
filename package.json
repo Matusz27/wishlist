@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.1",
+    "@angular/cdk": "^13.1.1",
     "@angular/common": "~13.1.1",
     "@angular/compiler": "~13.1.1",
     "@angular/core": "~13.1.1",
@@ -23,8 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "echarts": "^5.2.2",
-    "ngx-echarts": "^8.0.1",
+    "@swimlane/ngx-charts": "^19.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -33,6 +33,8 @@
     "@angular-devkit/build-angular": "^13.1.2",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.1",
+    "@types/d3-scale": "^4.0.2",
+    "@types/d3-selection": "^3.0.2",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",

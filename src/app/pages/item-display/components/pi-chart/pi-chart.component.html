@@ -2,17 +2,25 @@
 
 
 
-
-<div class="legend">
-    <h3>Total Items: {{itemAmount}}</h3>
-    <div class="legend-items">
-        <span>Coming Soon: {{itemStatus.comingsoon}}</span>
-        <span>Free: {{itemStatus.free}}</span>
-        <span>Pre-order: {{itemStatus.preorder}}</span>
-        <span>Normal: {{itemStatus.normal}}</span>
-        <span>Discounted: {{itemStatus.discounted}}</span>
+<div class = "graph-left">
+    <h2>Items Chart:</h2>
+    <div class="legend">
+        <h3>Total Items: {{itemAmount}}</h3>
+        <div class="legend-items">
+            <div *ngFor = "let item of chartData; let i = index" class="item">
+                <input [(ngModel)] = item.color (ngModelChange) = "newColor($event, i)" 
+                class = "color" type="color">
+                <span>{{item.name}}: {{item.value}}</span>
+            </div>
+        </div>
     </div>
 </div>
-<div class="graph">
 
+<div class="graph-right">
+    <ngx-charts-pie-chart
+    [results] = "chartData"
+    [doughnut] = true
+    [arcWidth] = 0.35
+    [scheme] = colorSheme
+    ></ngx-charts-pie-chart>
 </div>
