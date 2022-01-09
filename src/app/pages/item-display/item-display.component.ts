@@ -12,7 +12,6 @@ export class ItemDisplayComponent implements OnInit, OnDestroy {
 
   id!: number;
   isFinished:boolean = false;
-  topTags!:any;
   private urlsub: Subscription = new Subscription;
 
   constructor(private route: ActivatedRoute, private steamCall: SteamCallService) {
@@ -26,8 +25,6 @@ export class ItemDisplayComponent implements OnInit, OnDestroy {
     });
     
     await this.steamCall.fetchSteamData(this.id)
-
-    this.topTags = this.steamCall.tagsCounter()
 
     this.isFinished = true
 

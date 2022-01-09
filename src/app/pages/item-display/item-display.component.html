@@ -4,44 +4,34 @@
 
 
 
-<app-loader *ngIf = "!isFinished; else finished"></app-loader>
+<app-loader *ngIf = "!isFinished"></app-loader>
 
-<ng-template #finished>
-
-    <main>
-        <div class="costs">
-            <div class="costs-container">
-                <h2>Wishlist Total:</h2>
-                <app-breakdown></app-breakdown>
-            </div>
-            <div class="costs-container">
-                <h2>Top 10 Games:</h2>
-                <app-breakdown [amount] = 10></app-breakdown>
-            </div>
-            <div class="costs-container">
-                <h2>Top 100 Games:</h2>
-                <app-breakdown  [amount] = 100></app-breakdown>
-            </div>
+<main *ngIf = "isFinished">
+    <div class="costs">
+        <div class="costs-container">
+            <h2>Wishlist Total:</h2>
+            <app-breakdown></app-breakdown>
         </div>
-        <div class="right-data">
-
-            <div class="tags">
-                <h2>Top 15 Tags:</h2>
-                <div class="tags-container">
-                    <div class="tag" *ngFor = "let tag of topTags">
-                        <span>{{tag[0]}}</span>
-                        <span>{{tag[1]}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="Item-chart">
-                <app-pi-chart class = "charts"></app-pi-chart>
-            </div>
-            <div class="options">
-                <h2>Options:</h2>
-                <span>Coming Soon!</span>
-            </div>
+        <div class="costs-container">
+            <h2>Top 10 Games:</h2>
+            <app-breakdown [amount] = 10></app-breakdown>
         </div>
-    </main>
-
-</ng-template>
+        <div class="costs-container">
+            <h2>Top 100 Games:</h2>
+            <app-breakdown  [amount] = 100></app-breakdown>
+        </div>
+    </div>
+    <div class="right-data">
+        <div class="tags">
+            <h2>Top 15 Tags:</h2>
+            <app-tags></app-tags>
+        </div>
+        <div class="Item-chart">
+            <app-pi-chart class = "charts"></app-pi-chart>
+        </div>
+        <div class="options">
+            <h2>Options:</h2>
+            <span>Coming Soon!</span>
+        </div>
+    </div>
+</main>

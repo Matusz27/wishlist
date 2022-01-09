@@ -18,6 +18,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { ItemDisplayComponent } from './pages/item-display/item-display.component';
 import { PiChartComponent } from './pages/item-display/components/pi-chart/pi-chart.component';
 import { BreakdownComponent } from './pages/item-display/components/breakdown/breakdown.component';
+import { ErrorComponent } from './shared/error/error.component';
+import { TagsComponent } from './pages/item-display/components/tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BreakdownComponent } from './pages/item-display/components/breakdown/br
     LoaderComponent,
     ItemDisplayComponent,
     PiChartComponent,
-    BreakdownComponent
+    BreakdownComponent,
+    ErrorComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

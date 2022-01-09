@@ -1,0 +1,33 @@
+
+
+
+
+
+
+.tags-container {
+    display: flex;
+    gap: 0.5em 1em;
+    flex-direction: column;
+    align-items: center;
+
+    .tag {
+        background-color: #1D222B;
+        display: flex;
+        border-radius: 5px;
+        gap: 1em;
+        justify-content: space-between;
+        padding: 0.1em 1em;
+        font-size: 0.9em;
+        font-weight: 300;
+    }
+}
+@media only screen and(min-width: 900px) {
+
+    .tags-container {
+        margin-left: 2em;
+        gap: 0.5em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
