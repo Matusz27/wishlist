@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Prices } from '../interfaces/prices';
 import { Status } from '../interfaces/status';
 import { CurrencyService } from './currency.service';
+import { ErrorsService } from './errors.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SteamCallService {
   steamData:{} = {};
   
 
-  constructor(private http: HttpClient, private Currency: CurrencyService) {}
+  constructor(private http: HttpClient, private Currency: CurrencyService, private errorHandle: ErrorsService) {}
 
 
   changeStatus(status:string){
@@ -30,11 +31,18 @@ export class SteamCallService {
 
     let url = `http://localhost:4200/api/${id}/wishlistdata/`
 
-    for (let page = 0; page < 1; page++) {
+    for (let page = 0; page < 150; page++) {
         //150
         let query = {'p': page, 'cc': this.Currency.selectedCountry}
-
-        let steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
+        let steamCall
+        
+        try{
+          steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
+        }
+        catch(error){
+          this.errorHandle.riseError(error)
+          return;
+        }
         
       this.currentStatus = `Loading page ${page + 1}`
       this.Subject.next()

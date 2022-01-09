@@ -6,7 +6,9 @@
 
 <app-loader *ngIf = "!isFinished"></app-loader>
 
-<main *ngIf = "isFinished">
+<app-error *ngIf = "isError"></app-error>
+
+<main *ngIf = "isFinished && !isError">
     <div class="costs">
         <div class="costs-container">
             <h2>Wishlist Total:</h2>

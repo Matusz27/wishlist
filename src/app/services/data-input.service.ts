@@ -22,13 +22,17 @@ export class DataInputService {
     let isValidUrl = this.checkIfUrl(userInput);
 
     if (!isValidUrl){
-      return userInput
+      return [userInput, true]
     }
     
     let urlBrokenDown = userInput.split('/')
     
     let idIndex = urlBrokenDown.findIndex((urlPart) => urlPart === "profiles")
 
-    return(urlBrokenDown[idIndex + 1])
+    if (idIndex === -1) {
+      return ( [0 , false])
+    }
+
+    return([urlBrokenDown[idIndex + 1], true])
   }
 }

@@ -1,3 +1,4 @@
+import { ErrorsService } from './../../services/errors.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  errorMessage:string = "Something Went Wrong"
+
+  constructor(private errorsHanle: ErrorsService) { }
 
   ngOnInit(): void {
+    if (this.errorsHanle.message != ''){
+      this.errorMessage = this.errorsHanle.message
+    }
   }
 
 }

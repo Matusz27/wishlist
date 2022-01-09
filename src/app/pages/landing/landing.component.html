@@ -18,7 +18,10 @@
             <option value="UK,GBP">GBP</option>
         </select>
         </div>
-        <span>Supports: SteamID, Account URL, Wishlist URL</span>
+        <span *ngIf = "validLink, else Error">Supports: SteamID, Account URL, Wishlist URL</span>
+        <ng-template #Error>
+            <span class="error">*This link is invalid</span>
+        </ng-template>
     </div>
     <input id="submit" type="submit" value="Analyse">
 </form>
