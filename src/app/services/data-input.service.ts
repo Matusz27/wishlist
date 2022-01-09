@@ -24,9 +24,11 @@ export class DataInputService {
     if (!isValidUrl){
       return userInput
     }
+    
+    let urlBrokenDown = userInput.split('/')
+    
+    let idIndex = urlBrokenDown.findIndex((urlPart) => urlPart === "profiles")
 
-    console.log
-
-    return(1)
+    return(urlBrokenDown[idIndex + 1])
   }
 }
