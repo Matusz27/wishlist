@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router'
 import { FormBuilder } from '@angular/forms';
-import { SteamCallService } from 'src/app/services/steam-call.service';
+import { CurrencyService } from 'src/app/services/currency.service';
+import { DataInputService } from 'src/app/services/data-input.service';
 
 @Component({
   selector: 'app-landing',
@@ -15,15 +16,20 @@ export class LandingComponent implements OnInit {
     currency: ''
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private steamCall: SteamCallService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private currencyservice: CurrencyService,
+    private dataClaening: DataInputService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    let id = this.wishlistForm.get("steamID")!.value
+    let input = this.wishlistForm.get("steamID")!.value
+    let id = this.dataClaening.inputCleaner(input)
     let currency = this.wishlistForm.get("currency")!.value
-    this.steamCall.setCurrency(currency)
+    this.currencyservice.setCurrency(currency)
     this.router.navigate([id])
   }
 

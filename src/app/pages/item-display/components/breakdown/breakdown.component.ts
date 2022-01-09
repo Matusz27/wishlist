@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Prices } from 'src/app/interfaces/prices';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { SteamCallService } from 'src/app/services/steam-call.service';
 
 @Component({
@@ -13,16 +14,16 @@ export class BreakdownComponent implements OnInit {
   sum!: Prices;
   currencyCode: string = "";
 
-  constructor(private steamCall: SteamCallService) { }
+  constructor(private steamCall: SteamCallService, private currencyservice: CurrencyService) { }
 
   async ngOnInit(){
 
     this.sum = this.steamCall.sumGames(this.amount)
     
-    this.currencyCode = this.steamCall.selectedCurrency
+    this.currencyCode = this.currencyservice.selectedCurrency
 
     if (this.currencyCode === ""){
-      this.currencyCode = await this.steamCall.getCurrency()
+      this.currencyCode = await this.currencyservice.getCurrency()
     }
   }
 

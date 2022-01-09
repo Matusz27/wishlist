@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Prices } from '../interfaces/prices';
 import { Status } from '../interfaces/status';
+import { CurrencyService } from './currency.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,14 @@ export class SteamCallService {
   
   
   private Subject = new Subject();
-  selectedCountry:string = "";
-  selectedCurrency:string = "";
+
   all_tags!: { [key: string]: number; };
   currentStatus:string = "";
   steamData:{} = {};
   
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private Currency: CurrencyService) {}
 
-
-  async getCurrency():Promise<string>{
-    let url = 'http://ipwhois.app/json/'
-    let currency = await this.http.get<any>(url, {responseType: "json"}).toPromise()
-    return currency.currency_code
-  }
-
-  setCurrency(currency:string){
-    if (currency === ""){
-      return
-    }
-    let SplitedCurrency = currency.split(',', 2)
-    this.selectedCountry = SplitedCurrency[0]
-    this.selectedCurrency = SplitedCurrency[1]
-  }
 
   changeStatus(status:string){
     this.currentStatus = status
@@ -47,7 +32,7 @@ export class SteamCallService {
 
     for (let page = 0; page < 1; page++) {
         //150
-        let query = {'p': page, 'cc': this.selectedCountry}
+        let query = {'p': page, 'cc': this.Currency.selectedCountry}
 
         let steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
         
