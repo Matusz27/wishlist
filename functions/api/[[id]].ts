@@ -12,5 +12,5 @@ export async function onRequestGet(context:any) {
         //    url += para
         //});
         
-        return new Response(params.id, {status: 200} )
+        return new Response(params, {status: 200} )
 }
