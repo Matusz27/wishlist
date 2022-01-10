@@ -1,3 +1,4 @@
+import { faModx } from "@fortawesome/free-brands-svg-icons";
 
 
 
@@ -9,7 +10,8 @@ export async function onRequestGet(context:any) {
         
         let url = `https://store.steampowered.com/wishlist/profiles/${params[0]}/${params[1]}`
 
-        let responseData = await fetch(url)       
+        let response = await fetch(url)
+        let responseData = response.text() 
         
-        return new Response("Hello", {status: 200} )
+        return new Response(await responseData, {status: 200} )
 }
