@@ -49,6 +49,8 @@ export class SteamCallService {
         catch(error){
           this.errorHandle.riseError(error)
           console.log(error)
+          console.log(steamCall)
+          console.log(url)
           return;
         }
         
