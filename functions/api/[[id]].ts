@@ -10,11 +10,5 @@ export async function onRequestGet(context:any) {
         params.forEach((para:string) => {
             url += para
         });
-    try {
-        let response = await fetch(url);
-        return new Response( await response.json())
-    } catch (err) {
-        return new Response("Error")
-    }
-
+        return new Response("Response", {status: 200} )
 }
