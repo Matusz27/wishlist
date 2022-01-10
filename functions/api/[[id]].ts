@@ -11,5 +11,6 @@ export async function onRequestGet(context:any) {
         //params.forEach((para:string) => {
         //    url += para
         //});
-        return new Response(JSON.parse(params), {status: 200} )
+        
+        return new Response("Response", {status: 200} )
 }
