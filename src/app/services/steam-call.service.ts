@@ -51,7 +51,7 @@ export class SteamCallService {
           console.log(error)
           console.log(steamCall)
           console.log(url)
-          console.log(currentUrl)
+          console.log(this.router.url)
           return;
         }
         
