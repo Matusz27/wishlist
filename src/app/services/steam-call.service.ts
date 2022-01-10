@@ -40,11 +40,11 @@ export class SteamCallService {
 
     for (let page = 0; page < 150; page++) {
         //150
-        let paraurl = `${url}/?p=${page}&cc=${this.Currency.selectedCountry}`
+        let query = {'p': page, 'cc': this.Currency.selectedCountry}
         let steamCall
         
         try{
-          steamCall = await this.http.get<any>(paraurl).toPromise()
+          steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
           console.log(steamCall)
         }
         catch(error){
