@@ -9,7 +9,7 @@ export async function onRequestGet(context:any) {
         
         let url = `https://store.steampowered.com/wishlist/profiles/${params[0]}/${params[1]}`
 
-        let responseData = await fetch(url).then(response => response.json())       
+        let responseData = await fetch(url)       
         
         return new Response("Hello", {status: 200} )
 }
