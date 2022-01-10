@@ -11,5 +11,5 @@ export async function onRequestGet(context:any) {
 
         let responseData = await fetch(url).then(response => response.json())       
         
-        return new Response(JSON.stringify(responseData), {status: 200} )
+        return new Response("Hello", {status: 200} )
 }
