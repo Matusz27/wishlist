@@ -36,7 +36,7 @@ export class SteamCallService {
 
     let currentUrl = this.router.url.split('/')
   
-    let url = `https://store.steampowered.com/wishlist/profiles/${currentUrl[1]}/wishlistdata`
+    let url = `/api/${currentUrl[1]}/wishlistdata`
 
     for (let page = 0; page < 150; page++) {
         //150
@@ -48,8 +48,6 @@ export class SteamCallService {
         }
         catch(error){
           this.errorHandle.riseError(error)
-          console.log(error)
-          console.log(steamCall)
           return;
         }
         
