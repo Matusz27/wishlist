@@ -5,6 +5,7 @@ import { Prices } from '../interfaces/prices';
 import { Status } from '../interfaces/status';
 import { CurrencyService } from './currency.service';
 import { ErrorsService } from './errors.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,11 @@ export class SteamCallService {
   steamData:{} = {};
   
 
-  constructor(private http: HttpClient, private Currency: CurrencyService, private errorHandle: ErrorsService) {}
+  constructor(private http: HttpClient, 
+    private Currency: CurrencyService, 
+    private errorHandle: ErrorsService,
+    private router: Router) {}
+
 
 
   changeStatus(status:string){
@@ -27,9 +32,11 @@ export class SteamCallService {
     this.Subject.next()
   }
 
-  async fetchSteamData(id:number){
+  async fetchSteamData(){
 
-    let url = `http://localhost:4200/api/${id}/wishlistdata/`
+    let currentUrl = this.router.url.split('/')
+  
+    let url = `${currentUrl[0]}/api/${currentUrl[1]}/wishlistdata/`
 
     for (let page = 0; page < 150; page++) {
         //150
