@@ -36,7 +36,7 @@ export class SteamCallService {
 
     let currentUrl = this.router.url.split('/')
   
-    let url = `/api/${currentUrl[1]}/wishlistdata/`
+    let url = `/api/${currentUrl[1]}/wishlistdata`
 
     for (let page = 0; page < 150; page++) {
         //150
@@ -44,7 +44,7 @@ export class SteamCallService {
         let steamCall
         
         try{
-          steamCall = await this.http.get<any>(url, {params: query}).toPromise()
+          steamCall = await this.http.get<any>(url, {params: query, responseType: undefined}).toPromise()
         }
         catch(error){
           this.errorHandle.riseError(error)
