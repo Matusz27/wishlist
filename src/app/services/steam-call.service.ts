@@ -45,9 +45,11 @@ export class SteamCallService {
         
         try{
           steamCall = await this.http.get<any>(url, {params: query, responseType: "json"}).toPromise()
+          console.log(steamCall)
         }
         catch(error){
           this.errorHandle.riseError(error)
+          console.log(error)
           return;
         }
         
