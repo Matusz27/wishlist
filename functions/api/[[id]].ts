@@ -19,5 +19,5 @@ export async function onRequestGet(context:any) {
         
         
         
-        return new Response(JSON.parse(responseData), {status: 200} )
+        return new Response(responseData, {status: 200} )
 }
