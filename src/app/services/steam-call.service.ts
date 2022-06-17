@@ -96,13 +96,12 @@ export class SteamCallService {
 
     if (amount === 0){
       sumedItems.averagePrice = sumedItems.cleanPrice / Object.keys(this.steamData).length
+      return (sumedItems)
     }
-    else{
-      sumedItems.averagePrice = sumedItems.cleanPrice / amount
-    }
-    
 
+    sumedItems.averagePrice = sumedItems.cleanPrice / amount
     return (sumedItems)
+    
   }
 
   tagsCounter(){
