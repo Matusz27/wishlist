@@ -38,7 +38,7 @@ export class SteamCallService {
   
     let url = `/api/${currentUrl[1]}/wishlistdata`
 
-    for (let page = 0; page < 150; page++) {
+    for (let page = 0; page < 1; page++) {
         //150
         let query = {'p': page, 'cc': this.Currency.selectedCountry}
         let steamCall
